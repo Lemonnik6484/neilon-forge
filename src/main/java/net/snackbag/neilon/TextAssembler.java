@@ -1,5 +1,8 @@
 package net.snackbag.neilon;
 
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.text.HoverEvent;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.snackbag.neilon.types.TextType;
@@ -34,7 +37,30 @@ public class TextAssembler {
     }
 
     public TextAssembler hover(Text text) {
-        getLastOrThrow("hover").hoverText = text;
+        TextElement last = getLastOrThrow("hover-text");
+
+        last.hoverText = text;
+        last.hoverItem = null;
+        last.hoverEntity = null;
+
+        return this;
+    }
+
+    public TextAssembler hover(Item item) {
+        return hover(item, 1);
+    }
+
+    public TextAssembler hover(Item item, int count) {
+        return hover(new ItemStack(item, count));
+    }
+
+    public TextAssembler hover(ItemStack stack) {
+        TextElement last = getLastOrThrow("hover-item");
+
+        last.hoverText = null;
+        last.hoverItem = new HoverEvent.ItemStackContent(stack);
+        last.hoverEntity = null;
+
         return this;
     }
 
