@@ -10,11 +10,11 @@ Neilon is a Fabric text library to aid in working with Minecraft text.
 - [ ] Basic text styling
 - [X] Colors
 - [ ] Gradients
-- [ ] Click actions
-    - [ ] Command running
-    - [ ] Command suggestions
-    - [ ] Opening URLs
-    - [ ] Copy to clipboard
+- [X] Click actions
+    - [X] Command running
+    - [X] Command suggestions
+    - [X] Opening URLs
+    - [X] Copy to clipboard
 - [X] Hover events
     - [X] Text
     - [X] Item
