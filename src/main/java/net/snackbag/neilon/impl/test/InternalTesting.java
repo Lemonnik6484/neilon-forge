@@ -7,7 +7,7 @@ import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.snackbag.neilon.NText;
-import net.snackbag.neilon.TextType;
+import net.snackbag.neilon.types.TextType;
 import net.snackbag.vera.core.VColor;
 
 public class InternalTesting {

@@ -2,6 +2,7 @@ package net.snackbag.neilon;
 
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
+import net.snackbag.neilon.types.TextType;
 import net.snackbag.vera.core.VColor;
 
 import java.util.ArrayList;

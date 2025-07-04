@@ -1,4 +1,4 @@
-package net.snackbag.neilon;
+package net.snackbag.neilon.types;
 
 public enum TextType {
     LITERAL,
