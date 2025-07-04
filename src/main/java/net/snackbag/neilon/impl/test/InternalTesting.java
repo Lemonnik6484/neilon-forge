@@ -28,9 +28,15 @@ public class InternalTesting {
         source.sendMessage(NText.of("basic text"));
 
         source.sendMessage(NText.assemble()
-                        .text("block.minecraft.grass_block", NType.KEYBINDING)
-                        .text("<-- keybinding (& stacked element)")
-                        .build()
+                .text("block.minecraft.grass_block", NType.KEYBINDING)
+                .text("<-- keybinding (& stacked element)")
+                .build()
+        );
+
+        source.sendMessage(NText.assemble()
+                .text("red text")
+                .color(VColor.MC_RED)
+                .build()
         );
 
         return 1;
