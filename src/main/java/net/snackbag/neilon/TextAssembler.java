@@ -1,5 +1,7 @@
 package net.snackbag.neilon;
 
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.HoverEvent;
@@ -10,6 +12,7 @@ import net.snackbag.vera.core.VColor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class TextAssembler {
     private final List<TextElement> elements = new ArrayList<>();
@@ -60,6 +63,20 @@ public class TextAssembler {
         last.hoverText = null;
         last.hoverItem = new HoverEvent.ItemStackContent(stack);
         last.hoverEntity = null;
+
+        return this;
+    }
+
+    public TextAssembler hover(Entity entity) {
+        return hover(entity.getType(), entity.getUuid(), entity.getName());
+    }
+
+    public TextAssembler hover(EntityType<?> type, UUID uuid, Text name) {
+        TextElement last = getLastOrThrow("hover-entity");
+
+        last.hoverText = null;
+        last.hoverItem = null;
+        last.hoverEntity = new HoverEvent.EntityContent(type, uuid, name);
 
         return this;
     }
