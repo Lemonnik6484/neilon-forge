@@ -4,6 +4,7 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.command.CommandRegistryAccess;
+import net.minecraft.item.Items;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.snackbag.neilon.NText;
@@ -38,6 +39,28 @@ public class InternalTesting {
         source.sendMessage(
                 NText.of("lime with red hover text", VColor.MC_GREEN, "beautiful", VColor.MC_RED)
         );
+
+        source.sendMessage(NText.assemble()
+                .text("5 diamonds hover")
+                .hover(Items.DIAMOND, 5)
+                .build()
+        );
+
+        if (source.getPlayer().getMainHandStack() != null) {
+            source.sendMessage(
+                    NText.assemble()
+                            .text("main hand stack")
+                            .hover(source.getPlayer().getMainHandStack())
+                            .build()
+            );
+        } else {
+            source.sendMessage(NText.of("Need item in main hand to issue full test"));
+        }
+
+        source.sendMessage(NText.assemble()
+                .text("self hover")
+                .hover(source.getPlayer())
+                .build());
 
         return 1;
     }
