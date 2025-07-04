@@ -19,13 +19,13 @@ Neilon is a Fabric text library to aid in working with Minecraft text.
     - [ ] Item
     - [ ] Entity
 
+## Usage
+
+See the [wiki](https://wiki.snackbag.net/w/neilon),
+or [directly contribute to our wiki](https://github.com/snackbag/wiki)
+
 ## Update policy
 
 Unless we see high demand, or we need it ourselves, we will follow the latest Minecraft version by looking
 at [Create Fabric](https://modrinth.com/mod/create-fabric), as this mod is used primarily for
 the [SnackBag Create mod server](https://snackbag.net/).
-
-## Usage
-
-See the [wiki](https://wiki.snackbag.net/w/neilon),
-or [directly contribute to our wiki](https://github.com/snackbag/wiki)
