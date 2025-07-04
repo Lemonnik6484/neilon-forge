@@ -116,6 +116,16 @@ public class TextAssembler {
         return this;
     }
 
+    public TextAssembler repeat(int amount) {
+        TextElement last = getLastOrThrow("repeat");
+
+        for (int i = 0; i < amount; i++) {
+            elements.add(last);
+        }
+
+        return this;
+    }
+
     private TextElement getLastOrThrow(String attempted) {
         if (elements.isEmpty()) throw new RuntimeException("Cannot apply %s if no text is available".formatted(attempted));
         return elements.get(elements.size() - 1);
