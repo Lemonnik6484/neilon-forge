@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.text.HoverEvent;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
+import net.snackbag.neilon.types.ClickType;
 import net.snackbag.neilon.types.TextType;
 import net.snackbag.vera.core.VColor;
 
@@ -77,6 +78,15 @@ public class TextAssembler {
         last.hoverText = null;
         last.hoverItem = null;
         last.hoverEntity = new HoverEvent.EntityContent(type, uuid, name);
+
+        return this;
+    }
+
+    public TextAssembler click(ClickType type, String action) {
+        TextElement last = getLastOrThrow("click");
+
+        last.clickType = type;
+        last.clickAction = action;
 
         return this;
     }
