@@ -19,6 +19,7 @@ Neilon is a Fabric text library to aid in working with Minecraft text.
     - [X] Text
     - [X] Item
     - [X] Entity
+- [ ] QOL text methods
 
 ## Usage
 
