@@ -33,4 +33,4 @@ the [SnackBag Create mod server](https://snackbag.net/).
 ## Testing
 
 There are two Neilon testing phases. First, we have set up JUnit tests for the most operations you can do. These tests
-are followed by the ingame tests we issue to assure everything works as intended.
+are followed by the ingame tests we issue to ensure everything works as intended.
