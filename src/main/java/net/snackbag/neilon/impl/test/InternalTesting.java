@@ -103,6 +103,9 @@ public class InternalTesting {
                 .build()
         );
 
+        source.sendMessage(NText.assemble().text("repeat").repeat(3).build());
+        source.sendMessage(NText.assemble().text("repeat2").repeat(3).color(VColor.black()).build());
+
         return 1;
     }
 }
