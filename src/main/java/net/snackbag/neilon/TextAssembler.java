@@ -3,7 +3,7 @@ package net.snackbag.neilon;
 import net.minecraft.text.Text;
 
 public class TextAssembler {
-    protected TextAssembler() {
+    private final List<TextElement> elements = new ArrayList<>();
 
     }
 
