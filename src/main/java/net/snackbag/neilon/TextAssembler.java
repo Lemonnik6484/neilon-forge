@@ -91,6 +91,31 @@ public class TextAssembler {
         return this;
     }
 
+    public TextAssembler bold() {
+        getLastOrThrow("bold").bold = true;
+        return this;
+    }
+
+    public TextAssembler italic() {
+        getLastOrThrow("italic").italic = true;
+        return this;
+    }
+
+    public TextAssembler underlined() {
+        getLastOrThrow("underlined").underlined = true;
+        return this;
+    }
+
+    public TextAssembler strikethrough() {
+        getLastOrThrow("strikethrough").strikethrough = true;
+        return this;
+    }
+
+    public TextAssembler magic() {
+        getLastOrThrow("magic").magic = true;
+        return this;
+    }
+
     private TextElement getLastOrThrow(String attempted) {
         if (elements.isEmpty()) throw new RuntimeException("Cannot apply %s if no text is available".formatted(attempted));
         return elements.get(elements.size() - 1);
