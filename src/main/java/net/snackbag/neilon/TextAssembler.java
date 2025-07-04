@@ -5,6 +5,7 @@ import net.minecraft.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class TextAssembler {
     private final List<TextElement> elements = new ArrayList<>();
@@ -18,6 +19,10 @@ public class TextAssembler {
     public TextAssembler text(String value, NType type) {
         elements.add(new TextElement(value, type));
         return this;
+    }
+
+    private void asLast(Consumer<TextElement> exec) {
+        if (!elements.isEmpty()) exec.accept(elements.get(elements.size() - 1));
     }
 
     public Text build() {
