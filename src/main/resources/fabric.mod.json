@@ -3,15 +3,16 @@
 	"id": "neilon-lib",
 	"version": "${version}",
 	"name": "Neilon",
-	"description": "I'm a fun little description :D",
+	"description": "Fabric QOL text library",
 	"authors": [
-		"mkmod generator"
+		"JX_Snack"
 	],
 	"contact": {
-		"homepage": "https://github.com/snackbag/mkmod",
-		"sources": "https://github.com/snackbag/mkmod/blob/main/fabric"
+		"homepage": "https://github.com/snackbag/neilon",
+		"sources": "https://github.com/snackbag/neilon",
+		"issues": "https://github.com/snackbag/neilon/issues"
 	},
-	"license": "MIT",
+	"license": "GPL-3.0",
 	"icon": "assets/neilon-lib/icon.png",
 	"environment": "*",
 	"entrypoints": {
