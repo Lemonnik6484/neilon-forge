@@ -21,8 +21,9 @@ public class TextAssembler {
         return this;
     }
 
-    private void asLast(Consumer<TextElement> exec) {
-        if (!elements.isEmpty()) exec.accept(elements.get(elements.size() - 1));
+    private TextElement getLastOrThrow(String attempted) {
+        if (elements.isEmpty()) throw new RuntimeException("Cannot apply %s if no text is available".formatted(attempted));
+        return elements.get(elements.size() - 1);
     }
 
     public Text build() {
