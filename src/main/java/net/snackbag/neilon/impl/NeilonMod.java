@@ -1,4 +1,4 @@
-package net.snackbag.neilon;
+package net.snackbag.neilon.impl;
 
 import net.fabricmc.api.ModInitializer;
 

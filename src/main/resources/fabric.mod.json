@@ -17,10 +17,10 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.snackbag.neilon.NeilonMod"
+			"net.snackbag.neilon.impl.NeilonMod"
 		],
 		"fabric-datagen": [
-			"net.snackbag.neilon.NeilonModDataGenerator"
+			"net.snackbag.neilon.impl.NeilonModDataGenerator"
 		]
 	},
 	"mixins": [

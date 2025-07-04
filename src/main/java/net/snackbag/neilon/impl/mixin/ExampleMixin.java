@@ -1,4 +1,4 @@
-package net.snackbag.neilon.mixin;
+package net.snackbag.neilon.impl.mixin;
 
 import net.minecraft.server.MinecraftServer;
 import org.spongepowered.asm.mixin.Mixin;

@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "net.snackbag.neilon.mixin",
+	"package": "net.snackbag.neilon.impl.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
 		"ExampleMixin"
