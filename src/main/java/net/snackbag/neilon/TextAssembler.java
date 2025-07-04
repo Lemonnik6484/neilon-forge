@@ -13,10 +13,10 @@ public class TextAssembler {
     protected TextAssembler() {}
 
     public TextAssembler text(String value) {
-        return text(value, NType.LITERAL);
+        return text(value, TextType.LITERAL);
     }
 
-    public TextAssembler text(String value, NType type) {
+    public TextAssembler text(String value, TextType type) {
         elements.add(new TextElement(value, type));
         return this;
     }

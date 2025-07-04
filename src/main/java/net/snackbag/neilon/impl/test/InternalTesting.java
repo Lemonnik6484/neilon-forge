@@ -7,7 +7,7 @@ import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.snackbag.neilon.NText;
-import net.snackbag.neilon.NType;
+import net.snackbag.neilon.TextType;
 import net.snackbag.vera.core.VColor;
 
 public class InternalTesting {
@@ -28,7 +28,7 @@ public class InternalTesting {
         source.sendMessage(NText.of("basic text"));
 
         source.sendMessage(NText.assemble()
-                .text("block.minecraft.grass_block", NType.KEYBINDING)
+                .text("block.minecraft.grass_block", TextType.KEYBINDING)
                 .text("<-- keybinding (& stacked element)")
                 .build()
         );

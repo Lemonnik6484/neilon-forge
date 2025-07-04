@@ -8,12 +8,12 @@ import org.jetbrains.annotations.Nullable;
 
 public class TextElement {
     public final String value;
-    public final NType type;
+    public final TextType type;
 
     public VColor color = VColor.white();
     public @Nullable Text hoverText;
 
-    protected TextElement(String value, NType type) {
+    protected TextElement(String value, TextType type) {
         this.value = value;
         this.type = type;
     }

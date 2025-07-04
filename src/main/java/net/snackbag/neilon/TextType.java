@@ -1,6 +1,6 @@
 package net.snackbag.neilon;
 
-public enum NType {
+public enum TextType {
     LITERAL,
     TRANSLATION,
     KEYBINDING
