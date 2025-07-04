@@ -33,11 +33,7 @@ public class InternalTesting {
                 .build()
         );
 
-        source.sendMessage(NText.assemble()
-                .text("red text")
-                .color(VColor.MC_RED)
-                .build()
-        );
+        source.sendMessage(NText.of("red text", VColor.MC_RED));
 
         return 1;
     }
