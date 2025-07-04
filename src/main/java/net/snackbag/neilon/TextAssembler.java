@@ -11,8 +11,12 @@ public class TextAssembler {
 
     protected TextAssembler() {}
 
-    public TextAssembler text(String value) { // TODO: actual logic
-        return new TextAssembler();
+    public TextAssembler text(String value) {
+        return text(value, NType.LITERAL);
+    }
+
+    public TextAssembler text(String value, NType type) {
+        return this;
     }
 
     public Text build() {
