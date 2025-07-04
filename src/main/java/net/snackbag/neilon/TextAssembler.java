@@ -2,10 +2,10 @@ package net.snackbag.neilon;
 
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
+import net.snackbag.vera.core.VColor;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 public class TextAssembler {
     private final List<TextElement> elements = new ArrayList<>();
@@ -18,6 +18,13 @@ public class TextAssembler {
 
     public TextAssembler text(String value, NType type) {
         elements.add(new TextElement(value, type));
+        return this;
+    }
+
+    public TextAssembler color(VColor color) {
+        TextElement last = getLastOrThrow("color");
+        last.color = color;
+
         return this;
     }
 
