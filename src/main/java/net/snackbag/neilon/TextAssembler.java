@@ -1,6 +1,10 @@
 package net.snackbag.neilon;
 
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TextAssembler {
     private final List<TextElement> elements = new ArrayList<>();
