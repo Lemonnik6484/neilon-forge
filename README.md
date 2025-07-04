@@ -21,6 +21,8 @@ Neilon is a Fabric text library to aid in working with Minecraft text.
 
 ## Usage
 
+Requires Vera 1.0 or later (that includes server-side) NOTE: this mod does not do any client-side shenanigans
+
 See the [wiki](https://wiki.snackbag.net/w/neilon),
 or [directly contribute to our wiki](https://github.com/snackbag/wiki)
 
