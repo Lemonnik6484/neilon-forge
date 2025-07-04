@@ -12,7 +12,10 @@ public class TextElement {
     public final TextType type;
 
     public VColor color = VColor.white();
+
     public @Nullable Text hoverText;
+    public @Nullable HoverEvent.ItemStackContent hoverItem;
+    public @Nullable HoverEvent.EntityContent hoverEntity;
 
     protected TextElement(String value, TextType type) {
         this.value = value;
@@ -23,8 +26,16 @@ public class TextElement {
         text.styled(style -> {
             style = style.withColor(color.toInt());
 
-            if (hoverText != null)
+            //
+            // Hover styles
+            //
+            if (hoverText != null) {
                 style = style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, hoverText));
+            } else if (hoverItem != null) {
+                style = style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ITEM, hoverItem));
+            } else if (hoverEntity != null) {
+                style = style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ENTITY, hoverEntity));
+            }
 
             return style;
         });
