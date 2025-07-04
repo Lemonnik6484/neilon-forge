@@ -38,8 +38,12 @@ public class InternalTesting {
 
         source.sendMessage(NText.of("red text", VColor.MC_RED));
 
-        source.sendMessage(
-                NText.of("lime with red hover text", VColor.MC_GREEN, "beautiful", VColor.MC_RED)
+        source.sendMessage(NText.assemble()
+                .text("lime with red hover text")
+                .color(VColor.MC_GREEN)
+                .hover("beautiful")
+                .color(VColor.MC_RED)
+                .build()
         );
 
         source.sendMessage(NText.assemble()
