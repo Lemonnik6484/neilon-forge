@@ -16,6 +16,7 @@ public class TextAssembler {
     }
 
     public TextAssembler text(String value, NType type) {
+        elements.add(new TextElement(value, type));
         return this;
     }
 
