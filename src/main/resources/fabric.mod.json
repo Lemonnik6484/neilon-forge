@@ -1,0 +1,35 @@
+{
+	"schemaVersion": 1,
+	"id": "neilon-lib",
+	"version": "${version}",
+	"name": "Neilon",
+	"description": "I'm a fun little description :D",
+	"authors": [
+		"mkmod generator"
+	],
+	"contact": {
+		"homepage": "https://github.com/snackbag/mkmod",
+		"sources": "https://github.com/snackbag/mkmod/blob/main/fabric"
+	},
+	"license": "MIT",
+	"icon": "assets/neilon-lib/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.snackbag.neilon.NeilonMod"
+		],
+		"fabric-datagen": [
+			"net.snackbag.neilon.NeilonModDataGenerator"
+		]
+	},
+	"mixins": [
+		"neilon-lib.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {}
+}
