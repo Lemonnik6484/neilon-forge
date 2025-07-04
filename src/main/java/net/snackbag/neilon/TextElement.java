@@ -46,7 +46,7 @@ public class TextElement {
             // Click actions
             //
 
-            potentiallyFixCommand();
+            potentiallyFixClick();
 
             if (clickType != null) {
                 switch (clickType) {
@@ -63,9 +63,11 @@ public class TextElement {
         return text;
     }
 
-    private void potentiallyFixCommand() {
+    private void potentiallyFixClick() {
         if (clickType == ClickType.RUN && !clickAction.startsWith("/")) {
             clickAction = "/" + clickAction;
+        } else if (clickType == ClickType.URL && !clickAction.matches("[a-zA-Z][a-zA-Z0-9+.-]*://.*")) {
+            clickAction = "https://" + clickAction;
         }
     }
 
