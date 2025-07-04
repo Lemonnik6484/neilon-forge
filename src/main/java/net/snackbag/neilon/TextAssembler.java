@@ -12,6 +12,12 @@ public class TextAssembler {
     }
 
     public Text build() {
-        return Text.literal("aaaa");
+        MutableText output = Text.literal("");
+
+        for (TextElement elem : elements) {
+            output.append(elem.convert());
+        }
+
+        return output;
     }
 }
