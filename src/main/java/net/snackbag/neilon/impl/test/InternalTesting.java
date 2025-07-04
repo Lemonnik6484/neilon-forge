@@ -71,12 +71,12 @@ public class InternalTesting {
 
         source.sendMessage(NText.assemble()
                 .text("click run + fix")
-                .click(ClickType.RUN, "say hi")
+                .click(ClickType.RUN, "gamemode survival")
                 .build());
 
         source.sendMessage(NText.assemble()
                 .text("click run + no fix")
-                .click(ClickType.RUN, "/say ello")
+                .click(ClickType.RUN, "/gamemode creative")
                 .build());
 
         source.sendMessage(NText.assemble()
