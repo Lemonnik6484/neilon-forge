@@ -21,6 +21,14 @@ public class NText {
         return assemble().text(key, TextType.KEYBINDING).color(color).build();
     }
 
+    public static Text translation(String key) {
+        return assemble().text(key, TextType.TRANSLATION).build();
+    }
+
+    public static Text translation(String key, VColor color) {
+        return assemble().text(key, TextType.TRANSLATION).color(color).build();
+    }
+
     public static TextAssembler assemble() {
         return new TextAssembler();
     }
