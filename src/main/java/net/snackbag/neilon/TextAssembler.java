@@ -5,7 +5,7 @@ import net.minecraft.text.Text;
 public class TextAssembler {
     private final List<TextElement> elements = new ArrayList<>();
 
-    }
+    protected TextAssembler() {}
 
     public TextAssembler text(String value) { // TODO: actual logic
         return new TextAssembler();
