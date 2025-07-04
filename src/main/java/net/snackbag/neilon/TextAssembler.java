@@ -28,6 +28,15 @@ public class TextAssembler {
         return this;
     }
 
+    public TextAssembler hover(String text) {
+        return hover(NText.of(text));
+    }
+
+    public TextAssembler hover(Text text) {
+        getLastOrThrow("hover").hoverText = text;
+        return this;
+    }
+
     private TextElement getLastOrThrow(String attempted) {
         if (elements.isEmpty()) throw new RuntimeException("Cannot apply %s if no text is available".formatted(attempted));
         return elements.get(elements.size() - 1);
