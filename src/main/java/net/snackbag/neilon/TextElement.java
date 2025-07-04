@@ -22,6 +22,12 @@ public class TextElement {
     public @Nullable ClickType clickType;
     public @Nullable String clickAction;
 
+    public boolean bold = false;
+    public boolean italic = false;
+    public boolean underlined = false;
+    public boolean strikethrough = false;
+    public boolean magic = false;
+
     protected TextElement(String value, TextType type) {
         this.value = value;
         this.type = type;
@@ -30,6 +36,15 @@ public class TextElement {
     public Text applyStyles(MutableText text) {
         text.styled(style -> {
             style = style.withColor(color.toInt());
+
+            //
+            // Basic styling
+            //
+            style = style.withBold(bold);
+            style = style.withItalic(italic);
+            style = style.withUnderline(underlined);
+            style = style.withStrikethrough(strikethrough);
+            style = style.withObfuscated(magic);
 
             //
             // Hover styles
