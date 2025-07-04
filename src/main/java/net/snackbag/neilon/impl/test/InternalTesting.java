@@ -94,6 +94,15 @@ public class InternalTesting {
                 .click(ClickType.COPY, ":p")
                 .build());
 
+        source.sendMessage(NText.assemble()
+                .text("bold").bold()
+                .text("italic").italic()
+                .text("underlined").underlined()
+                .text("strikethrough").strikethrough()
+                .text("magic").magic()
+                .build()
+        );
+
         return 1;
     }
 }
