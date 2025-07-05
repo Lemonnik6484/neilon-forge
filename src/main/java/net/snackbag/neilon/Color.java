@@ -1,7 +1,5 @@
 package net.snackbag.neilon;
 
-import net.snackbag.vera.core.VColor;
-
 public record Color(int r, int g, int b) {
     public int toInt() {
         return 255 << 24 | r << 16 | g << 8 | b;
