@@ -7,11 +7,10 @@ import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.item.Items;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.text.Text;
+import net.snackbag.neilon.Color;
 import net.snackbag.neilon.NText;
 import net.snackbag.neilon.types.ClickType;
 import net.snackbag.neilon.types.TextType;
-import net.snackbag.vera.core.VColor;
 
 public class InternalTesting {
     public static void init() {
@@ -36,13 +35,13 @@ public class InternalTesting {
                 .build()
         );
 
-        source.sendMessage(NText.of("red text", VColor.MC_RED));
+        source.sendMessage(NText.of("red text", Color.RED));
 
         source.sendMessage(NText.assemble()
                 .text("lime with red hover text")
-                .color(VColor.MC_GREEN)
+                .color(Color.GREEN)
                 .hover("beautiful")
-                .color(VColor.MC_RED)
+                .color(Color.RED)
                 .build()
         );
 
@@ -108,7 +107,7 @@ public class InternalTesting {
         );
 
         source.sendMessage(NText.assemble().text("repeat").repeat(3).build());
-        source.sendMessage(NText.assemble().text("repeat2").repeat(3).color(VColor.black()).build());
+        source.sendMessage(NText.assemble().text("repeat2").repeat(3).color(Color.BLACK).build());
 
         return 1;
     }

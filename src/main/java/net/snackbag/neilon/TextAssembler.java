@@ -9,7 +9,6 @@ import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.snackbag.neilon.types.ClickType;
 import net.snackbag.neilon.types.TextType;
-import net.snackbag.vera.core.VColor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +28,7 @@ public class TextAssembler {
         return this;
     }
 
-    public TextAssembler color(VColor color) {
+    public TextAssembler color(Color color) {
         TextElement last = getLastOrThrow("color");
         last.color = color;
 

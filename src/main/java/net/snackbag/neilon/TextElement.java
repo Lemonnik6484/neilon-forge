@@ -6,14 +6,13 @@ import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.snackbag.neilon.types.ClickType;
 import net.snackbag.neilon.types.TextType;
-import net.snackbag.vera.core.VColor;
 import org.jetbrains.annotations.Nullable;
 
 public class TextElement {
     public final String value;
     public final TextType type;
 
-    public VColor color = VColor.white();
+    public Color color = Color.WHITE;
 
     public @Nullable Text hoverText;
     public @Nullable HoverEvent.ItemStackContent hoverItem;
