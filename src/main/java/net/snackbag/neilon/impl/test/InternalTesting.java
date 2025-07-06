@@ -40,7 +40,7 @@ public class InternalTesting {
         source.sendSuccess(() -> NText.assemble()
                 .text("lime with red hover text")
                 .color(Color.GREEN)
-                .hover(NText.of("beautiful", Color.GREEN))
+                .hover(NText.of("beautiful", Color.RED))
                 .build(), false);
 
         source.sendSuccess(() -> NText.assemble()
