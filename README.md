@@ -1,6 +1,9 @@
-# Neilon
+# Neilon-Forge
+This project is licensed under the GNU GPL v3.0.
+It is based on [Neilon](https://github.com/snackbag/neilon) by [SnackBag Studios](https://github.com/snackbag).
+I'm, Lemonnik, only porting it to forge.
 
-Neilon is a Fabric text library to aid in working with Minecraft text.
+Neilon is a ~~Fabric~~ Forge text library to aid in working with Minecraft text.
 
 **Roadmap**
 
