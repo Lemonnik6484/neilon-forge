@@ -2,7 +2,7 @@ package net.snackbag.neilon;
 
 public record Color(int r, int g, int b) {
     public int toInt() {
-        return 255 << 24 | r << 16 | g << 8 | b;
+        return (r << 16) | (g << 8) | b;
     }
 
     public static final Color BLACK = of(0);
