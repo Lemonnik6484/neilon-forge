@@ -1,9 +1,9 @@
 package net.snackbag.neilon;
 
-import net.minecraft.text.ClickEvent;
-import net.minecraft.text.HoverEvent;
-import net.minecraft.text.MutableText;
-import net.minecraft.text.Text;
+import net.minecraft.network.chat.ClickEvent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.HoverEvent;
+import net.minecraft.network.chat.MutableComponent;
 import net.snackbag.neilon.types.ClickType;
 import net.snackbag.neilon.types.TextType;
 import org.jetbrains.annotations.Nullable;
@@ -14,9 +14,9 @@ public class TextElement {
 
     public Color color = Color.WHITE;
 
-    public @Nullable Text hoverText;
-    public @Nullable HoverEvent.ItemStackContent hoverItem;
-    public @Nullable HoverEvent.EntityContent hoverEntity;
+    public @Nullable Component hoverText;
+    public @Nullable HoverEvent.ItemStackInfo hoverItem;
+    public @Nullable HoverEvent.EntityTooltipInfo hoverEntity;
 
     public @Nullable ClickType clickType;
     public @Nullable String clickAction;
@@ -32,8 +32,8 @@ public class TextElement {
         this.type = type;
     }
 
-    public Text applyStyles(MutableText text) {
-        text.styled(style -> {
+    public Component applyStyles(MutableComponent text) {
+        text.withStyle(style -> {
             style = style.withColor(color.toInt());
 
             //
@@ -41,7 +41,7 @@ public class TextElement {
             //
             style = style.withBold(bold);
             style = style.withItalic(italic);
-            style = style.withUnderline(underlined);
+            style = style.withUnderlined(underlined);
             style = style.withStrikethrough(strikethrough);
             style = style.withObfuscated(magic);
 
@@ -89,11 +89,11 @@ public class TextElement {
         return new ClickEvent(action, clickAction);
     }
 
-    public Text convert() {
+    public Component convert() {
         return applyStyles(switch (type) {
-            case LITERAL -> Text.literal(value);
-            case TRANSLATION -> Text.translatable(value);
-            case KEYBINDING -> Text.keybind(value);
+            case LITERAL -> Component.literal(value);
+            case TRANSLATION -> Component.translatable(value);
+            case KEYBINDING -> Component.keybind(value);
         });
     }
 }

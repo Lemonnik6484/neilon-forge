@@ -2,11 +2,11 @@ package net.snackbag.neilon.impl.test;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
-import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
-import net.minecraft.command.CommandRegistryAccess;
-import net.minecraft.item.Items;
-import net.minecraft.server.command.CommandManager;
-import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands;
+import net.minecraft.world.item.Items;
+import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.snackbag.neilon.Color;
 import net.snackbag.neilon.NText;
 import net.snackbag.neilon.types.ClickType;
@@ -14,99 +14,95 @@ import net.snackbag.neilon.types.TextType;
 
 public class InternalTesting {
     public static void init() {
-        CommandRegistrationCallback.EVENT.register(InternalTesting::command);
+        net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(new InternalTesting());
     }
 
-    private static void command(CommandDispatcher<ServerCommandSource> dispatcher,
-                                CommandRegistryAccess registryAccess,
-                                CommandManager.RegistrationEnvironment environment) {
-        dispatcher.register(CommandManager.literal("neilon")
-                .then(CommandManager.literal("test").executes(InternalTesting::executeTests)));
+    @SubscribeEvent
+    public void onRegisterCommands(RegisterCommandsEvent event) {
+        CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
+
+        dispatcher.register(Commands.literal("neilon")
+                .then(Commands.literal("test").executes(this::executeTests)));
     }
 
-    private static int executeTests(CommandContext<ServerCommandSource> ctx) {
+    private int executeTests(CommandContext<CommandSourceStack> ctx) {
         var source = ctx.getSource();
 
-        source.sendMessage(NText.of("basic text"));
+        source.sendSuccess(() -> NText.of("basic text"), false);
 
-        source.sendMessage(NText.assemble()
+        source.sendSuccess(() -> NText.assemble()
                 .text("block.minecraft.grass_block", TextType.KEYBINDING)
                 .text("<-- keybinding (& stacked element)")
-                .build()
-        );
+                .build(), false);
 
-        source.sendMessage(NText.of("red text", Color.RED));
+        source.sendSuccess(() -> NText.of("red text", Color.RED), false);
 
-        source.sendMessage(NText.assemble()
+        source.sendSuccess(() -> NText.assemble()
                 .text("lime with red hover text")
                 .color(Color.GREEN)
                 .hover(NText.of("beautiful", Color.GREEN))
-                .build()
-        );
+                .build(), false);
 
-        source.sendMessage(NText.assemble()
+        source.sendSuccess(() -> NText.assemble()
                 .text("5 diamonds hover")
                 .hover(Items.DIAMOND, 5)
-                .build()
-        );
+                .build(), false);
 
-        if (source.getPlayer().getMainHandStack() != null) {
-            source.sendMessage(
-                    NText.assemble()
-                            .text("main hand stack")
-                            .hover(source.getPlayer().getMainHandStack())
-                            .build()
-            );
+        var player = source.getPlayer();
+        if (player != null && !player.getMainHandItem().isEmpty()) {
+            source.sendSuccess(() -> NText.assemble()
+                    .text("main hand stack")
+                    .hover(player.getMainHandItem())
+                    .build(), false);
         } else {
-            source.sendMessage(NText.of("Need item in main hand to issue full test"));
+            source.sendSuccess(() -> NText.of("Need item in main hand to issue full test"), false);
         }
 
-        source.sendMessage(NText.assemble()
+        source.sendSuccess(() -> NText.assemble()
                 .text("self hover")
-                .hover(source.getPlayer())
-                .build());
+                .hover(player)
+                .build(), false);
 
-        source.sendMessage(NText.assemble()
+        source.sendSuccess(() -> NText.assemble()
                 .text("click suggestion")
                 .click(ClickType.SUGGEST, "hello there")
-                .build());
+                .build(), false);
 
-        source.sendMessage(NText.assemble()
+        source.sendSuccess(() -> NText.assemble()
                 .text("click run + fix")
                 .click(ClickType.RUN, "gamemode survival")
-                .build());
+                .build(), false);
 
-        source.sendMessage(NText.assemble()
+        source.sendSuccess(() -> NText.assemble()
                 .text("click run + no fix")
                 .click(ClickType.RUN, "/gamemode creative")
-                .build());
+                .build(), false);
 
-        source.sendMessage(NText.assemble()
+        source.sendSuccess(() -> NText.assemble()
                 .text("click open url + fix")
                 .click(ClickType.URL, "github.com/snackbag/neilon")
-                .build());
+                .build(), false);
 
-        source.sendMessage(NText.assemble()
+        source.sendSuccess(() -> NText.assemble()
                 .text("click open url + no fix")
                 .click(ClickType.URL, "https://github.com/snackbag/neilon")
-                .build());
+                .build(), false);
 
-        source.sendMessage(NText.assemble()
+        source.sendSuccess(() -> NText.assemble()
                 .text("click copy")
                 .click(ClickType.COPY, ":p")
-                .build());
+                .build(), false);
 
-        source.sendMessage(NText.assemble()
+        source.sendSuccess(() -> NText.assemble()
                 .text("bold").bold()
                 .text("italic").italic()
                 .text("underlined").underlined()
                 .text("strikethrough").strikethrough()
                 .text("magic").magic()
-                .build()
-        );
+                .build(), false);
 
-        source.sendMessage(NText.assemble().text("repeat").repeat(3).build());
-        source.sendMessage(NText.assemble().text("repeat2").repeat(3).color(Color.BLACK).build());
+        source.sendSuccess(() -> NText.assemble().text("repeat").repeat(3).build(), false);
+        source.sendSuccess(() -> NText.assemble().text("repeat2").repeat(3).color(Color.BLACK).build(), false);
 
         return 1;
     }

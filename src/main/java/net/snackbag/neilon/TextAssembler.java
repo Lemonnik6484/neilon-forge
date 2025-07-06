@@ -1,12 +1,12 @@
 package net.snackbag.neilon;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.text.HoverEvent;
-import net.minecraft.text.MutableText;
-import net.minecraft.text.Text;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.HoverEvent;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.snackbag.neilon.types.ClickType;
 import net.snackbag.neilon.types.TextType;
 
@@ -39,7 +39,7 @@ public class TextAssembler {
         return hover(NText.of(text));
     }
 
-    public TextAssembler hover(Text text) {
+    public TextAssembler hover(Component text) {
         TextElement last = getLastOrThrow("hover-text");
 
         last.hoverText = text;
@@ -61,22 +61,22 @@ public class TextAssembler {
         TextElement last = getLastOrThrow("hover-item");
 
         last.hoverText = null;
-        last.hoverItem = new HoverEvent.ItemStackContent(stack);
+        last.hoverItem = new HoverEvent.ItemStackInfo(stack);
         last.hoverEntity = null;
 
         return this;
     }
 
-    public TextAssembler hover(Entity entity) {
-        return hover(entity.getType(), entity.getUuid(), entity.getName());
+    public TextAssembler hover(LivingEntity entity) {
+        return hover(entity.getType(), entity.getUUID(), entity.getName());
     }
 
-    public TextAssembler hover(EntityType<?> type, UUID uuid, Text name) {
+    public TextAssembler hover(EntityType<?> type, UUID uuid, Component name) {
         TextElement last = getLastOrThrow("hover-entity");
 
         last.hoverText = null;
         last.hoverItem = null;
-        last.hoverEntity = new HoverEvent.EntityContent(type, uuid, name);
+        last.hoverEntity = new HoverEvent.EntityTooltipInfo(type, uuid, name);
 
         return this;
     }
@@ -130,8 +130,8 @@ public class TextAssembler {
         return elements.get(elements.size() - 1);
     }
 
-    public Text build() {
-        MutableText output = Text.literal("");
+    public Component build() {
+        MutableComponent output = Component.literal("");
 
         for (TextElement elem : elements) {
             output.append(elem.convert());

@@ -1,21 +1,33 @@
 package net.snackbag.neilon.impl;
 
-import net.fabricmc.api.ModInitializer;
-
-import net.fabricmc.loader.api.FabricLoader;
+import com.mojang.logging.LogUtils;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.snackbag.neilon.impl.test.InternalTesting;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-public class NeilonMod implements ModInitializer {
-	public static final String MOD_ID = "neilon-lib";
+@Mod(NeilonMod.MODID)
+public class NeilonMod
+{
+    public static final String MODID = "neilon_lib";
+    private static final Logger LOGGER = LogUtils.getLogger();
+    
+    public NeilonMod(FMLJavaModLoadingContext context)
+    {
+        IEventBus modEventBus = context.getModEventBus();
 
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+        modEventBus.addListener(this::commonSetup);
+    }
 
-	@Override
-	public void onInitialize() {
-		LOGGER.info("Neilon is installed");
+    private void commonSetup(final FMLCommonSetupEvent event)
+    {
+        LOGGER.info("Neilon is installed");
 
-		if (FabricLoader.getInstance().isDevelopmentEnvironment()) InternalTesting.init();
-	}
+        if (!FMLEnvironment.production) {
+            InternalTesting.init();
+        }
+    }
 }
