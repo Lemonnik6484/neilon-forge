@@ -33,7 +33,7 @@ Neilon is a ~~Fabric~~ Forge text library to aid in working with Minecraft text.
 
 ## Usage
 
-See the [wiki](https://wiki.snackbag.net/w/neilon),
+See the [wiki](https://wiki.snackbag.net/w/neilon), // P.S. this wiki is made for fabric version, but it's the same on forge except importing
 or [directly contribute to our wiki](https://github.com/snackbag/wiki)
 
 ## Update policy
